@@ -1,5 +1,4 @@
-#ifndef RUNWAY_H
-#define RUNWAY_H
+#pragma once
 
 #include "IdCodeGenerator.h"
 #include <string>
@@ -35,4 +34,4 @@ public:
 	void incrementPlanesTakeOff();
 };
 
-#endif // !RUNWAY_H
+

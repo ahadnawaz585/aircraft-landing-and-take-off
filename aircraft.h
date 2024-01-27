@@ -1,5 +1,4 @@
-#ifndef AIRCRAFT_H
-#define AIRCRAFT_H
+#pragma once
 
 #include "IdCodeGenerator.h"
 #include <string>
@@ -33,4 +32,3 @@ public:
     void setAirTime(int time);
 };
 
-#endif // !AIRCRAFT_H

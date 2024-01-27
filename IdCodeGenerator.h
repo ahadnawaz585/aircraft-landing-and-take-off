@@ -1,5 +1,4 @@
-#ifndef IDCODEGENERATOR_H
-#define IDCODEGENERATOR_H
+#pragma once
 
 #include <string>
 
@@ -19,4 +18,3 @@ public:
     virtual const std::string& getCode() const = 0;  
 };
 
-#endif // !IDCODEGENERATOR_H

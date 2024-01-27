@@ -1,5 +1,4 @@
-#ifndef queue_h
-#define queue_h
+#pragma once
 #include <queue>
 #include "aircraft.h"
 
@@ -32,4 +31,4 @@ public:
     size_t landingQueueSize() const;
     size_t takeOffQueueSize() const;
 };
-#endif
+
