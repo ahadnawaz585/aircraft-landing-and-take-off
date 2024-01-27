@@ -24,7 +24,7 @@ public:
     void enqueueTakeOff(const Aircraft &aircraft);
 
     Aircraft dequeueLanding();
-    Aircraft dequeueLanding();
+    Aircraft dequeueTakeOff();
 
     bool isLandingQueueEmpty() const;
     bool isTakeOffQueueEmpty() const;

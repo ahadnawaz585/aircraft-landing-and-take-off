@@ -1,19 +1,22 @@
-#ifndef IdCodeGenerator_h
-#define IdCodeGenerator_h
+#ifndef IDCODEGENERATOR_H
+#define IDCODEGENERATOR_H
+
 #include <string>
 
-class IdCodeGenerator
-{
+class IdCodeGenerator {
 private:
     static int lastAssignedID;
-    virtual int generateID() = 0;
 
 protected:
-    std::string generateCode(const std::string &prefix);
+    static int generateID();
+    static std::string generateCode(const std::string& prefix);
 
 public:
-    virtual ~IdCodeGenerator() = default;
-    int getNextID();
+    IdCodeGenerator();
+    virtual ~IdCodeGenerator();
+
+    virtual int getId() const = 0;  
+    virtual const std::string& getCode() const = 0;  
 };
 
-#endif
+#endif // !IDCODEGENERATOR_H

@@ -41,11 +41,11 @@
     <ClInclude Include="aircraft.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IdCodeGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="queue.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IdCodeGenerator.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

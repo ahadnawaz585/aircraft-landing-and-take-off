@@ -1,7 +1,7 @@
 #include "Runway.h"
 
 Runway::Runway(RunwayStatus status, bool priority)
-    : id(getNextID()), code(generateCode("RW")), status(status), hasPriority(priority), planesLanded(0), planesTakeOff(0) {}
+    : IdCodeGenerator(), id(generateID()), code(generateCode("RW")), status(status), hasPriority(priority), planesLanded(0), planesTakeOff(0) {}
 
 RunwayStatus Runway::getStatus() const
 {
@@ -23,7 +23,7 @@ int Runway::getPlanesTakeOff() const
     return planesTakeOff;
 }
 
-const std::string &Runway::getCode() const
+const std::string& Runway::getCode() const
 {
     return code;
 }
