@@ -12,7 +12,7 @@ std::string IdCodeGenerator::generateCode(const std::string &prefix)
     return oss.str();
 }
 
-int IdCodeGenerator::getNextID()
+int IdCodeGenerator::generateID()
 {
     return ++lastAssignedID;
 }
