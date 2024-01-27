@@ -3,3 +3,6 @@
 *.mdf
 *.ldf
 *.opendb
+*.sin
+*.vcxproj
+*.vcxproj.filters
