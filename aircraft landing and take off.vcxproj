@@ -128,6 +128,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aircraft landing and take off.cpp" />
+    <ClCompile Include="aircraft.cpp" />
+    <ClCompile Include="IdCodeGenerator.cpp" />
+    <ClCompile Include="queue.cpp" />
+    <ClCompile Include="runway.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="aircraft.h" />
+    <ClInclude Include="IdCodeGenerator.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="runway.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

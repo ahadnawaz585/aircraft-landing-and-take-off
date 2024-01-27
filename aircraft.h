@@ -1,27 +1,24 @@
 #ifndef AIRCRAFT_H
 #define AIRCRAFT_H
+
+#include "IdCodeGenerator.h"
 #include <string>
 
-enum class AircraftStatus {
+enum class AircraftStatus
+{
     LANDING,
     TAKEOFF,
     IN_AIR
 };
 
-class Aircraft {
+class Aircraft : public IdCodeGenerator
+{
 private:
     int id;
     std::string code;
     AircraftStatus status;
     int fuelLevel;
     int airTime;
-
-    //  auto-incrementing ID
-    static int lastAssignedID;
-    static int generateID();
-
-    //generating the aircraft code
-    static std::string generateCode();
 
 public:
     Aircraft(AircraftStatus status, int fuel, int time);
@@ -30,7 +27,7 @@ public:
     AircraftStatus getStatus() const;
     int getFuelLevel() const;
     int getAirTime() const;
-    const std::string& getCode() const;
+    const std::string &getCode() const;
 
     void setFuelLevel(int fuel);
     void setAirTime(int time);

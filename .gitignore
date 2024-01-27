@@ -1,5 +1,4 @@
 .vscode/
-# SQL Server files
 *.mdf
 *.ldf
 *.opendb
