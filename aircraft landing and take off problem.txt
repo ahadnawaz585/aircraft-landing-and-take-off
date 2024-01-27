@@ -1,0 +1,59 @@
+airlanding and takeoff of aircraft simulation
+
+1. aircrafts are generated randomly for take-off and landing 
+2. five runways are available 
+3. 3 runways have priority for landing
+4. aircrafts are generated for landing with random fuel available mentioning airtime 
+5. if any runway is assigned to an aircraft it will be reserved for a minute
+6. low fuel aircraft will be kept on high priorty for landing
+7. take off aircrafts can be asked to wait if landing queue is large 
+8. runway is available for landing or take off once the aircraft has taken off or landed .
+9. for real time for aircraft set realistic time for aircraft for landing or take off 
+10.if all runways are occupied and landing aircraft fuel is exhausted , aircraft is crashed.
+11.show stats of 
+    - crashed aircrafts
+    - what was runways status when the aircraft generated and stats of
+           -landing time
+           -take off time
+           - fuel available
+    -average wait time for 
+           -landing
+           -take off
+12.Take off aircrafts are served fifo
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Aircraft Class:
+Create a class to represent aircraft, containing attributes such as unique identifier, fuel level, airtime, and whether it is landing or taking off. Implement a method to calculate the remaining fuel after a certain airtime.
+
+Runway Class:
+Create a Runway class to represent each runway. Include attributes such as availability status, last landing/takeoff time, and a queue to store waiting aircraft.
+
+Priority Queue for Landing:
+Maintain a priority queue for landing aircraft, with priority based on fuel levels. Lower fuel levels should have higher priority. This ensures that low fuel aircraft are given preference.
+
+Five Runways Array:
+Create an array to represent the five runways. Initialize the three runways with landing priority and the other two for takeoff.
+
+Main Simulation Loop:
+In the main simulation loop, generate aircraft randomly for landing or takeoff. If it's a landing aircraft, enqueue it in the priority queue. If it's a takeoff aircraft, enqueue it in a FIFO queue for takeoff.
+
+Landing Algorithm:
+For landing, check the priority queue and assign the first available runway from the landing priority runways. Reserve the runway for a minute. If all three priority runways are occupied, low fuel aircraft will wait until a runway becomes available or crash if fuel is exhausted.
+
+Takeoff Algorithm:
+For takeoff, check the FIFO queue for takeoff. If a runway is available, assign it to the next takeoff aircraft. If all runways are occupied, takeoff aircraft can wait until a runway becomes available.
+
+Statistics and Logging:
+Keep track of crashed aircraft, landing and takeoff times, fuel available, and runway statuses. Calculate average wait times for landing and takeoff.
+
+Realistic Time Handling:
+Implement a mechanism to simulate realistic time for aircraft landing and takeoff. You can use a timer or timestamps for this purpose.
+
+Output and Visualization:
+Print or visualize the statistics, runway status, and other relevant information at regular intervals during the simulation.
+
+Optimizations:
+Implement optimizations such as efficient data structures for queues and priority queues, and consider parallelization to improve performance.
