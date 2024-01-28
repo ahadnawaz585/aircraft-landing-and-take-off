@@ -5,6 +5,10 @@
 
 int IdCodeGenerator::lastAssignedID = 0;
 
+IdCodeGenerator::IdCodeGenerator() {
+    // Initialize any necessary variables here
+}
+
 std::string IdCodeGenerator::generateCode(const std::string &prefix)
 {
     std::ostringstream oss;

@@ -27,6 +27,8 @@ public:
 
     bool isLandingQueueEmpty() const;
     bool isTakeOffQueueEmpty() const;
+    bool isEmpty() const;
+    Aircraft dequeue();
 
     size_t landingQueueSize() const;
     size_t takeOffQueueSize() const;

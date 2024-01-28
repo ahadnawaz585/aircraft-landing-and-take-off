@@ -1,26 +1,2 @@
-﻿  SimulationManager.cpp
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(10,27): error C2259: 'Runway': cannot instantiate abstract class
-D:\universty data\3 semester\DSA\aircraft landing and take off\Runway.h(20,7): message : see declaration of 'Runway'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(10,27): message : due to following members:
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(10,27): message : 'int IdCodeGenerator::getId(void) const': is abstract
-D:\universty data\3 semester\DSA\aircraft landing and take off\IdCodeGenerator.h(17,17): message : see declaration of 'IdCodeGenerator::getId'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(83,55): error C2677: binary '-': no global operator found which takes type 'std::chrono::steady_clock::time_point' (or there is no acceptable conversion)
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(1540,5): message : could be 'unknown-type std::operator -(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &) noexcept(<expr>)'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(83,52): message : 'unknown-type std::operator -(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &) noexcept(<expr>)': could not deduce template argument for 'const std::reverse_iterator<_BidIt> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\xutility(4044,30): message : or       'unknown-type std::operator -(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &) noexcept(<expr>)'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(83,52): message : 'unknown-type std::operator -(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &) noexcept(<expr>)': could not deduce template argument for 'const std::move_iterator<_Iter> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\__msvc_chrono.hpp(289,9): message : or       'common_type<std::chrono::duration<_Rep,_Period>,std::chrono::duration<_Rep2,_Period2>>::type std::chrono::operator -(const std::chrono::duration<_Rep,_Period> &,const std::chrono::duration<_Rep2,_Period2> &) noexcept(<expr>)'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(83,52): message : 'common_type<std::chrono::duration<_Rep,_Period>,std::chrono::duration<_Rep2,_Period2>>::type std::chrono::operator -(const std::chrono::duration<_Rep,_Period> &,const std::chrono::duration<_Rep2,_Period2> &) noexcept(<expr>)': could not deduce template argument for 'const std::chrono::duration<_Rep,_Period> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\__msvc_chrono.hpp(540,9): message : or       'std::chrono::time_point<_Clock,common_type<_Duration,std::chrono::duration<_Rep2,_Period2>>::type> std::chrono::operator -(const std::chrono::time_point<_Clock,_Duration> &,const std::chrono::duration<_Rep2,_Period2> &) noexcept(<expr>)'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(83,52): message : 'std::chrono::time_point<_Clock,common_type<_Duration,std::chrono::duration<_Rep2,_Period2>>::type> std::chrono::operator -(const std::chrono::time_point<_Clock,_Duration> &,const std::chrono::duration<_Rep2,_Period2> &) noexcept(<expr>)': could not deduce template argument for 'const std::chrono::time_point<_Clock,_Duration> &' from 'int'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\include\__msvc_chrono.hpp(548,9): message : or       'common_type<_Duration1,_Duration2>::type std::chrono::operator -(const std::chrono::time_point<_Clock,_Duration> &,const std::chrono::time_point<_Clock,_Duration2> &) noexcept(<expr>)'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(83,52): message : 'common_type<_Duration1,_Duration2>::type std::chrono::operator -(const std::chrono::time_point<_Clock,_Duration> &,const std::chrono::time_point<_Clock,_Duration2> &) noexcept(<expr>)': could not deduce template argument for 'const std::chrono::time_point<_Clock,_Duration> &' from 'int'
-D:\universty data\3 semester\DSA\aircraft landing and take off\SimulationManager.cpp(84): error C3536: 'elapsedTime': cannot be used before it is initialized
-  Statistics.cpp
-  Timer.cpp
-D:\universty data\3 semester\DSA\aircraft landing and take off\Timer.cpp(8,79): warning C4244: 'return': conversion from '_Rep' to 'int', possible loss of data
-          with
-          [
-              _Rep=__int64
-          ]
-  Generating Code...
+﻿  IdCodeGenerator.cpp
+  aircraft landing and take off.vcxproj -> D:\universty data\3 semester\DSA\aircraft landing and take off\x64\Debug\aircraft landing and take off.exe

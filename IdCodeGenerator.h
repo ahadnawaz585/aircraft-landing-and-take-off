@@ -12,8 +12,8 @@ protected:
 
 public:
     IdCodeGenerator();
-    virtual ~IdCodeGenerator();
+    ~IdCodeGenerator();
 
-    virtual int getId() const = 0;  
-    virtual const std::string& getCode() const = 0;  
+    int getId() const;
+    const std::string& getCode() const;
 };

@@ -1,6 +1,8 @@
 // Statistics.h
 #pragma once
 #include <chrono>
+#include <vector>
+#include "Runway.h"
 
 class Statistics {
 private:
@@ -39,5 +41,6 @@ public:
     int getTotalTookOffPlanes() const;
 
     void incrementLandedPlanes();
+    void updateStatistics(const std::vector<Runway>& runways);
     void incrementTookOffPlanes();
 };

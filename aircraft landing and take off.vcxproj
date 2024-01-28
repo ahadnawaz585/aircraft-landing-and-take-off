@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="aircraft landing and take off.cpp" />
     <ClCompile Include="aircraft.cpp" />
+    <ClCompile Include="crashHandling.cpp" />
     <ClCompile Include="IdCodeGenerator.cpp" />
     <ClCompile Include="queue.cpp" />
     <ClCompile Include="runway.cpp" />
@@ -138,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aircraft.h" />
+    <ClInclude Include="crashHandling.h" />
     <ClInclude Include="IdCodeGenerator.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="runway.h" />

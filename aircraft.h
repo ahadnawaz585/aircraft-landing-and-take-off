@@ -7,6 +7,7 @@ enum class AircraftStatus
 {
     LANDING,
     TAKEOFF,
+    CRASHED,
     IN_AIR
 };
 
@@ -15,11 +16,12 @@ class Aircraft : public IdCodeGenerator
 private:
     int id;
     std::string code;
-    AircraftStatus status;
+    AircraftStatus craftStatus;
     int fuelLevel;
     int airTime;
 
 public:
+    Aircraft() = default;
     Aircraft(AircraftStatus status, int fuel, int time);
 
     int getId() const;
@@ -29,6 +31,7 @@ public:
     const std::string &getCode() const;
 
     void setFuelLevel(int fuel);
+    void setStatus(AircraftStatus status);
     void setAirTime(int time);
 };
 

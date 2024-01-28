@@ -14,23 +14,25 @@ void Queue::enqueueTakeOff(const Aircraft& aircraft)
     takeOffQueue.push(aircraft);  
 }
 
-Aircraft Queue::dequeueLanding()
-{
-    if (!landingQueue.empty())
-    {
+Aircraft Queue::dequeueLanding() {
+    if (!landingQueue.empty()) {
         Aircraft frontAircraft = landingQueue.top();
         landingQueue.pop();
         return frontAircraft;
     }
+    else {
+        return Aircraft();
+    }
 }
 
-Aircraft Queue::dequeueTakeOff()
-{
-    if (!takeOffQueue.empty())
-    {
+Aircraft Queue::dequeueTakeOff() {
+    if (!takeOffQueue.empty()) {
         Aircraft frontAircraft = takeOffQueue.front();
         takeOffQueue.pop();
         return frontAircraft;
+    }
+    else {
+        return Aircraft();
     }
 }
 
@@ -54,3 +56,20 @@ size_t Queue::takeOffQueueSize() const
 {
     return takeOffQueue.size();
 }
+
+bool Queue::isEmpty() const {
+    return landingQueue.empty() && takeOffQueue.empty();
+}
+
+Aircraft Queue::dequeue() {
+    if (!isLandingQueueEmpty()) {
+        return dequeueLanding();
+    }
+    else if (!isTakeOffQueueEmpty()) {
+        return dequeueTakeOff();
+    }
+    else {
+        return Aircraft();
+    }
+}
+

@@ -14,7 +14,8 @@ enum class RunwayStatus
 enum class RunwayOperation
 {
     LANDING,
-    TAKEOFF
+    TAKEOFF,
+     NONE
 };
 
 class Runway : public IdCodeGenerator
@@ -31,7 +32,6 @@ private:
 
 public:
     Runway(RunwayStatus status, bool priority);
-
     RunwayStatus getStatus() const;
     bool hasLandingPriority() const;
     int getPlanesLanded() const;

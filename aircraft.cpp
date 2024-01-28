@@ -4,7 +4,7 @@ Aircraft::Aircraft(AircraftStatus status, int fuel, int time)
     : IdCodeGenerator(),
       id(generateID()),
       code(generateCode("ACR")),
-      status(status),
+      craftStatus(status),
       fuelLevel(fuel),
       airTime(time)
 {
@@ -15,7 +15,7 @@ int Aircraft::getId() const {
 }
 
 AircraftStatus Aircraft::getStatus() const {
-    return status;
+    return craftStatus;
 }
 
 int Aircraft::getFuelLevel() const {
@@ -34,6 +34,13 @@ void Aircraft::setFuelLevel(int fuel) {
     fuelLevel = fuel;
 }
 
+void Aircraft::setStatus(AircraftStatus status)
+{
+    craftStatus = status;
+}
+
 void Aircraft::setAirTime(int time) {
     airTime = time;
 }
+
+
