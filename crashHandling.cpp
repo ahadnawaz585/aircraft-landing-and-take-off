@@ -1,4 +1,4 @@
-// crashHandling.cpp
+
 #include "crashHandling.h"
 #include <algorithm>
 

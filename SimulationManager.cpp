@@ -1,10 +1,10 @@
-// SimulationManager.cpp
+
 #include "SimulationManager.h"
 #include <iostream>
 #include <cstdlib>
 
 SimulationManager::SimulationManager() {
-    // Initialize the runways
+
     for (int i = 0; i < 5; ++i) {
         bool hasPriority = (i < 3); 
         runways.push_back(Runway(RunwayStatus::FREE, hasPriority));
@@ -18,12 +18,12 @@ void SimulationManager::runSimulation(int simulationTime) {
         updateRunwayStatus();
         updateStatistics();
 
-        timer.incrementTime(1); // Increment time by 1 minute
+        timer.incrementTime(1);
     }
 }
 
 void SimulationManager::generateAircraft() {
-    // Generate aircraft randomly for take-off and landing
+
     if (rand() % 2 == 0) {
         Aircraft landingAircraft(AircraftStatus::LANDING, rand() % 100 + 1, rand() % 10 + 1);
         landingQueue.enqueueLanding(landingAircraft);
@@ -44,7 +44,7 @@ void SimulationManager::updateRunwayStatus() {
         RunwayStatus status = runway.getStatus();
         RunwayOperation lastOperation = runway.getLastOperation();
 
-        // Check if the runway is reserved for a minute
+
         if (status == RunwayStatus::OCCUPIED && lastOperation != RunwayOperation::NONE) {
             std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
             std::chrono::seconds elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - runway.getLastChangeTime());
@@ -69,7 +69,7 @@ void SimulationManager::handleLanding() {
             Aircraft landingAircraft = landingQueue.dequeueLanding();
             assignedRunway.incrementPlanesLanded();
             assignedRunway.setStatus(RunwayStatus::OCCUPIED);
-            assignedRunway.setPriority(false); // Reset priority after landing
+            assignedRunway.setPriority(false); 
 
             std::cout << "Aircraft " << landingAircraft.getCode() << " is landing on Runway " << assignedRunway.getCode() << std::endl;
         }
@@ -84,7 +84,7 @@ void SimulationManager::handleTakeOff() {
             Aircraft takeOffAircraft = takeOffQueue.dequeueTakeOff();
             assignedRunway.incrementPlanesTakeOff();
             assignedRunway.setStatus(RunwayStatus::OCCUPIED);
-            assignedRunway.setPriority(false); // Reset priority after take-off
+            assignedRunway.setPriority(false); 
 
             std::cout << "Aircraft " << takeOffAircraft.getCode() << " is taking off from Runway " << assignedRunway.getCode() << std::endl;
         }
@@ -104,18 +104,17 @@ Runway& SimulationManager::assignRunwayForLanding() {
         }
     }
 
-    // If all runways are occupied, return the first runway
+
     return runways.front();
 }
 
 Runway& SimulationManager::assignRunwayForTakeOff() {
-    // Serve take-off aircrafts FIFO
+
     for (Runway& runway : runways) {
         if (runway.getStatus() == RunwayStatus::FREE) {
             return runway;
         }
     }
 
-    // If all runways are occupied, return the first runway
     return runways.front();
 }

@@ -5,8 +5,7 @@
 
 int IdCodeGenerator::lastAssignedID = 0;
 
-IdCodeGenerator::IdCodeGenerator() {
-    // Initialize any necessary variables here
+IdCodeGenerator::IdCodeGenerator(){
 }
 
 std::string IdCodeGenerator::generateCode(const std::string &prefix)
