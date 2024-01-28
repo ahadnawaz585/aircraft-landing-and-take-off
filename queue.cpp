@@ -16,17 +16,24 @@ void Queue::enqueueTakeOff(const Aircraft& aircraft)
 
 Aircraft Queue::dequeueLanding()
 {
-    Aircraft frontAircraft = landingQueue.top();
-    landingQueue.pop();
-    return frontAircraft;
+    if (!landingQueue.empty())
+    {
+        Aircraft frontAircraft = landingQueue.top();
+        landingQueue.pop();
+        return frontAircraft;
+    }
 }
 
 Aircraft Queue::dequeueTakeOff()
 {
-    Aircraft frontAircraft = takeOffQueue.front();
-    takeOffQueue.pop();
-    return frontAircraft;
+    if (!takeOffQueue.empty())
+    {
+        Aircraft frontAircraft = takeOffQueue.front();
+        takeOffQueue.pop();
+        return frontAircraft;
+    }
 }
+
 
 bool Queue::isLandingQueueEmpty() const
 {

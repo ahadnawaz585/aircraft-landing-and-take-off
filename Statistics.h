@@ -1,5 +1,5 @@
+// Statistics.h
 #pragma once
-
 #include <chrono>
 
 class Statistics {
@@ -12,6 +12,8 @@ private:
     std::chrono::seconds totalTakeoffWaitTime;
     int landingCount;
     int takeoffCount;
+    int totalLandedPlanes;
+    int totalTookOffPlanes;
 
 public:
     Statistics();
@@ -20,6 +22,8 @@ public:
     void updateLandingTime(std::chrono::seconds time);
     void updateTakeoffTime(std::chrono::seconds time);
     void updateFuelAvailable(int fuel);
+    void updateLandingCount();
+    void updateTakeoffCount();
     void updateLandingWaitTime(std::chrono::seconds waitTime);
     void updateTakeoffWaitTime(std::chrono::seconds waitTime);
 

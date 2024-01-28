@@ -1,9 +1,10 @@
+// Statistics.cpp
 #include "Statistics.h"
+#include <chrono>
 
 Statistics::Statistics()
-    : crashedAircraftCount(0), totalLandingTime(std::chrono::seconds(0)), totalTakeoffTime(std::chrono::seconds(0)),
-    totalFuelAvailable(0), totalLandingWaitTime(std::chrono::seconds(0)), totalTakeoffWaitTime(std::chrono::seconds(0)),
-    landingCount(0), takeoffCount(0) {}
+    : crashedAircraftCount(0), totalLandingTime(0s), totalTakeoffTime(0s), totalFuelAvailable(0),
+    landingCount(0), takeoffCount(0), totalLandedPlanes(0), totalTookOffPlanes(0) {}
 
 void Statistics::aircraftCrashed() {
     crashedAircraftCount++;
@@ -11,16 +12,22 @@ void Statistics::aircraftCrashed() {
 
 void Statistics::updateLandingTime(std::chrono::seconds time) {
     totalLandingTime += time;
-    landingCount++;
 }
 
 void Statistics::updateTakeoffTime(std::chrono::seconds time) {
     totalTakeoffTime += time;
-    takeoffCount++;
 }
 
 void Statistics::updateFuelAvailable(int fuel) {
     totalFuelAvailable += fuel;
+}
+
+void Statistics::updateLandingCount() {
+    landingCount++;
+}
+
+void Statistics::updateTakeoffCount() {
+    takeoffCount++;
 }
 
 void Statistics::updateLandingWaitTime(std::chrono::seconds waitTime) {
@@ -64,17 +71,17 @@ int Statistics::getTotalFuelAvailable() const {
 }
 
 int Statistics::getTotalLandedPlanes() const {
-    return landingCount;
+    return totalLandedPlanes;
 }
 
 int Statistics::getTotalTookOffPlanes() const {
-    return takeoffCount;
+    return totalTookOffPlanes;
 }
 
 void Statistics::incrementLandedPlanes() {
-    landingCount++;
+    totalLandedPlanes++;
 }
 
 void Statistics::incrementTookOffPlanes() {
-    takeoffCount++;
+    totalTookOffPlanes++;
 }

@@ -1,14 +1,15 @@
-
 #include "Timer.h"
 
-Timer::Timer() : startTime(std::chrono::steady_clock::now()) {}
+Timer::Timer() : currentTime(0) {}
 
 int Timer::getCurrentTime() const {
-    auto currentTime = std::chrono::steady_clock::now() - startTime;
-    return std::chrono::duration_cast<std::chrono::seconds>(currentTime).count();
+    return currentTime;
 }
 
 void Timer::incrementTime(int deltaTime) {
-    auto deltaTimeInSeconds = std::chrono::seconds(deltaTime);
-    startTime += deltaTimeInSeconds;
+    currentTime += deltaTime;
+}
+
+void Timer::reset() {
+    currentTime = 0;
 }

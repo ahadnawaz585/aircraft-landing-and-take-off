@@ -16,3 +16,7 @@ int IdCodeGenerator::generateID()
 {
     return ++lastAssignedID;
 }
+
+IdCodeGenerator::~IdCodeGenerator() {
+}
+

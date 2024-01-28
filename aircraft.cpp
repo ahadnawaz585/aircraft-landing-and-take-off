@@ -1,7 +1,12 @@
 #include "Aircraft.h"
 
 Aircraft::Aircraft(AircraftStatus status, int fuel, int time)
-    : IdCodeGenerator(), id(generateID()), code(generateCode("ACR")), status(status), fuelLevel(fuel), airTime(time)
+    : IdCodeGenerator(),
+      id(generateID()),
+      code(generateCode("ACR")),
+      status(status),
+      fuelLevel(fuel),
+      airTime(time)
 {
 }
 
