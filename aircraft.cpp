@@ -1,14 +1,10 @@
 #include "Aircraft.h"
 
+
+
 Aircraft::Aircraft(AircraftStatus status, int fuel, int time)
-    : IdCodeGenerator(),
-      id(generateID()),
-      code(generateCode("ACR")),
-      craftStatus(status),
-      fuelLevel(fuel),
-      airTime(time)
-{
-}
+    : airTime(0), craftStatus(status), fuelLevel(0), id(0) {}
+
 
 int Aircraft::getId() const {
     return id;
@@ -43,4 +39,11 @@ void Aircraft::setAirTime(int time) {
     airTime = time;
 }
 
+Runway* Aircraft::getRunway() const {
+    return runway;
+}
+
+void Aircraft::setRunway(Runway* craftRunway) {
+    runway = craftRunway;
+}
 

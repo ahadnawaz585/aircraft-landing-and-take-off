@@ -1,17 +1,16 @@
+// queue.cpp
+
 #include "queue.h"
 
-Queue::Queue()
-{
+Queue::Queue() {
 }
 
-void Queue::enqueueLanding(const Aircraft& aircraft)
-{
+void Queue::enqueueLanding(const Aircraft& aircraft) {
     landingQueue.push(aircraft);
 }
 
-void Queue::enqueueTakeOff(const Aircraft& aircraft)
-{
-    takeOffQueue.push(aircraft);  
+void Queue::enqueueTakeOff(const Aircraft& aircraft) {
+    takeOffQueue.push(aircraft);
 }
 
 Aircraft Queue::dequeueLanding() {
@@ -26,8 +25,8 @@ Aircraft Queue::dequeueLanding() {
 }
 
 Aircraft Queue::dequeueTakeOff() {
-    if (!takeOffQueue.empty()) {
-        Aircraft frontAircraft = takeOffQueue.front();
+    if (!isTakeOffQueueEmpty()) {
+        Aircraft frontAircraft = takeOffQueue.top();
         takeOffQueue.pop();
         return frontAircraft;
     }
@@ -36,24 +35,19 @@ Aircraft Queue::dequeueTakeOff() {
     }
 }
 
-
-bool Queue::isLandingQueueEmpty() const
-{
+bool Queue::isLandingQueueEmpty() const {
     return landingQueue.empty();
 }
 
-bool Queue::isTakeOffQueueEmpty() const
-{
+bool Queue::isTakeOffQueueEmpty() const {
     return takeOffQueue.empty();
 }
 
-size_t Queue::landingQueueSize() const
-{
+size_t Queue::landingQueueSize() const {
     return landingQueue.size();
 }
 
-size_t Queue::takeOffQueueSize() const
-{
+size_t Queue::takeOffQueueSize() const {
     return takeOffQueue.size();
 }
 
@@ -73,3 +67,10 @@ Aircraft Queue::dequeue() {
     }
 }
 
+const std::priority_queue<Aircraft, std::vector<Aircraft>, CompareByFuel>& Queue::getTakeOffQueue() const {
+    return takeOffQueue;
+}
+
+const std::priority_queue<Aircraft, std::vector<Aircraft>, CompareByFuel>& Queue::getLandingQueue() const {
+    return landingQueue;
+}

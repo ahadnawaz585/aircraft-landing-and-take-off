@@ -2,6 +2,7 @@
 #include "SimulationManager.h"
 #include <iostream>
 #include <cstdlib>
+#include "crashHandling.h"
 
 SimulationManager::SimulationManager() {
 
@@ -41,9 +42,17 @@ void SimulationManager::processAircraft() {
 
 void SimulationManager::updateRunwayStatus() {
     for (Runway& runway : runways) {
+        std::priority_queue<Aircraft, std::vector<Aircraft>, CompareByFuel> queueCopy;
+
+        if (runway.getLastOperation() == RunwayOperation::LANDING) {
+            queueCopy = landingQueue.getLandingQueue();
+        }
+        else {
+            queueCopy = takeOffQueue.getTakeOffQueue();
+        }
+
         RunwayStatus status = runway.getStatus();
         RunwayOperation lastOperation = runway.getLastOperation();
-
 
         if (status == RunwayStatus::OCCUPIED && lastOperation != RunwayOperation::NONE) {
             std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
@@ -53,9 +62,22 @@ void SimulationManager::updateRunwayStatus() {
                 runway.setStatus(RunwayStatus::FREE);
                 runway.setPriority(false);
             }
+            else {
+                // Check for fuel exhaustion on occupied runways
+                while (!queueCopy.empty()) {
+                    Aircraft aircraft = queueCopy.top();
+                    queueCopy.pop();
+
+                    if (aircraft.getRunway() == &runway && aircraft.getFuelLevel() <= 0) {
+                        // Aircraft has exhausted fuel on occupied runway, trigger crash
+                        crashHandling::checkForCrash(aircraft, runways, statistics);
+                    }
+                }
+            }
         }
     }
 }
+
 
 void SimulationManager::updateStatistics() {
     statistics.updateStatistics(runways);
@@ -64,7 +86,8 @@ void SimulationManager::updateStatistics() {
 void SimulationManager::handleLanding() {
     if (!landingQueue.isLandingQueueEmpty()) {
         Runway& assignedRunway = assignRunwayForLanding();
-
+        Aircraft landingAircraft;
+        landingAircraft.setRunway(&assignedRunway);
         if (assignedRunway.getStatus() == RunwayStatus::FREE) {
             Aircraft landingAircraft = landingQueue.dequeueLanding();
             assignedRunway.incrementPlanesLanded();
@@ -79,17 +102,20 @@ void SimulationManager::handleLanding() {
 void SimulationManager::handleTakeOff() {
     if (!takeOffQueue.isTakeOffQueueEmpty()) {
         Runway& assignedRunway = assignRunwayForTakeOff();
+        Aircraft takeOffAircraft;
+        takeOffAircraft.setRunway(&assignedRunway);
 
         if (assignedRunway.getStatus() == RunwayStatus::FREE) {
-            Aircraft takeOffAircraft = takeOffQueue.dequeueTakeOff();
+            takeOffAircraft = takeOffQueue.dequeueTakeOff();
             assignedRunway.incrementPlanesTakeOff();
             assignedRunway.setStatus(RunwayStatus::OCCUPIED);
-            assignedRunway.setPriority(false); 
+            assignedRunway.setPriority(false);
 
             std::cout << "Aircraft " << takeOffAircraft.getCode() << " is taking off from Runway " << assignedRunway.getCode() << std::endl;
         }
     }
 }
+
 
 Runway& SimulationManager::assignRunwayForLanding() {
     for (Runway& runway : runways) {

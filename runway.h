@@ -31,6 +31,7 @@ private:
     std::chrono::steady_clock::time_point lastChangeTime;
 
 public:
+   
     Runway(RunwayStatus status, bool priority);
     RunwayStatus getStatus() const;
     bool hasLandingPriority() const;
