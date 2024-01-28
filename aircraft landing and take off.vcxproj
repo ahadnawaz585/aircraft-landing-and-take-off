@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="aircraft landing and take off.cpp" />
     <ClCompile Include="aircraft.cpp" />
     <ClCompile Include="crashHandling.cpp" />
     <ClCompile Include="IdCodeGenerator.cpp" />

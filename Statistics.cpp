@@ -23,7 +23,6 @@ void Statistics::updateLandingTime(std::chrono::seconds time) {
 void Statistics::updateTakeoffTime(std::chrono::seconds time) {
     totalTakeoffTime += time;
 }
-
 void Statistics::updateFuelAvailable(int fuel) {
     totalFuelAvailable += fuel;
 }

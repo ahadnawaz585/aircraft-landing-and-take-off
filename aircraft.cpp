@@ -1,9 +1,9 @@
 #include "Aircraft.h"
-
+#include "IdCodeGenerator.h"
 
 
 Aircraft::Aircraft(AircraftStatus status, int fuel, int time)
-    : airTime(0), craftStatus(status), fuelLevel(0), id(0) {}
+    : airTime(time), craftStatus(status), fuelLevel(fuel), id(generateID()) {}
 
 
 int Aircraft::getId() const {
@@ -46,4 +46,34 @@ Runway* Aircraft::getRunway() const {
 void Aircraft::setRunway(Runway* craftRunway) {
     runway = craftRunway;
 }
+
+std::string Aircraft::toString() const
+{
+    std::string statusString;
+    switch (craftStatus)
+    {
+    case AircraftStatus::LANDING:
+        statusString = "LANDING";
+        break;
+    case AircraftStatus::TAKEOFF:
+        statusString = "TAKEOFF";
+        break;
+    case AircraftStatus::CRASHED:
+        statusString = "CRASHED";
+        break;
+    case AircraftStatus::IN_AIR:
+        statusString = "IN_AIR";
+        break;
+    case AircraftStatus::IDLE:
+        statusString = "IDLE";
+        break;
+    default:
+        statusString = "UNKNOWN";
+        break;
+    }
+
+    return "Aircraft " + code + " Status: " + statusString + " Fuel: " + std::to_string(fuelLevel) +
+        " AirTime: " + std::to_string(airTime) + " ID: " + std::to_string(id);
+}
+
 

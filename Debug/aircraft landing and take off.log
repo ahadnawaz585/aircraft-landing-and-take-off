@@ -1,0 +1,17 @@
+﻿  aircraft landing and take off.cpp
+  aircraft.cpp
+  crashHandling.cpp
+  IdCodeGenerator.cpp
+  logger.cpp
+  queue.cpp
+  runway.cpp
+  SimulationManager.cpp
+  Statistics.cpp
+  Timer.cpp
+  userInterface.cpp
+  Generating Code...
+userInterface.obj : error LNK2019: unresolved external symbol "public: class std::vector<class Runway,class std::allocator<class Runway> > const & __thiscall SimulationManager::getRunways(void)const " (?getRunways@SimulationManager@@QBEABV?$vector@VRunway@@V?$allocator@VRunway@@@std@@@std@@XZ) referenced in function "public: void __thiscall UserInterface::displaySimulationStatus(void)" (?displaySimulationStatus@UserInterface@@QAEXXZ)
+userInterface.obj : error LNK2019: unresolved external symbol "public: unsigned int __thiscall SimulationManager::getLandingQueueSize(void)const " (?getLandingQueueSize@SimulationManager@@QBEIXZ) referenced in function "public: void __thiscall UserInterface::displaySimulationStatus(void)" (?displaySimulationStatus@UserInterface@@QAEXXZ)
+userInterface.obj : error LNK2019: unresolved external symbol "public: unsigned int __thiscall SimulationManager::getTakeOffQueueSize(void)const " (?getTakeOffQueueSize@SimulationManager@@QBEIXZ) referenced in function "public: void __thiscall UserInterface::displaySimulationStatus(void)" (?displaySimulationStatus@UserInterface@@QAEXXZ)
+userInterface.obj : error LNK2019: unresolved external symbol "public: void __thiscall SimulationManager::displayStatistics(void)const " (?displayStatistics@SimulationManager@@QBEXXZ) referenced in function "public: void __thiscall UserInterface::displaySimulationStatus(void)" (?displaySimulationStatus@UserInterface@@QAEXXZ)
+D:\universty data\3 semester\DSA\aircraft landing and take off\Debug\aircraft landing and take off.exe : fatal error LNK1120: 4 unresolved externals

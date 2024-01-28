@@ -1,75 +1,41 @@
-
 #include "SimulationManager.h"
-#include "UserInterface.h"
-#include "Logger.h"
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 #include "crashHandling.h"
 
 SimulationManager::SimulationManager() {
-
     for (int i = 0; i < 5; ++i) {
-        bool hasPriority = (i < 3); 
+        bool hasPriority = (i < 3);
         runways.push_back(Runway(RunwayStatus::FREE, hasPriority));
     }
 }
 
-const std::vector<Runway>& SimulationManager::getRunways() const {
-    return runways;
-}
-
-size_t SimulationManager::getLandingQueueSize() const {
-    return landingQueue.landingQueueSize();
-}
-
-size_t SimulationManager::getTakeOffQueueSize() const {
-    return takeOffQueue.takeOffQueueSize();
-}
-
-void SimulationManager::displayStatistics() const {
-    std::cout << "Simulation Statistics:\n";
-    std::cout << "-----------------------\n";
-
-    // Access the necessary data members from the statistics object
-    // and print them to the console
-    std::cout << "Total planes landed: " << statistics.getTotalLandedPlanes() << "\n";
-    std::cout << "Total planes took off: " << statistics.getTotalTookOffPlanes() << "\n";
-    std::cout << "Average landing time: " << statistics.getAverageLandingWaitTime() << " seconds\n";
-    std::cout << "Average takeoff time: " << statistics.getAverageTakeoffWaitTime() << " seconds\n";
-
-    // You can add more statistics based on your requirements
-
-    std::cout << "-----------------------\n";
-}
-
 void SimulationManager::runSimulation(int simulationTime) {
-    UserInterface ui(*this);
-    Logger logger("simulation_log.txt");
-
     while (timer.getCurrentTime() < simulationTime) {
         generateAircraft();
         processAircraft();
         updateRunwayStatus();
         updateStatistics();
-
-        ui.displaySimulationStatus(); 
-        logger.logEvent("Simulation step completed.");
-
         timer.incrementTime(1);
     }
 }
 
 void SimulationManager::generateAircraft() {
+    Aircraft landingAircraft;
+    Aircraft takeOffAircraft;
 
     if (rand() % 2 == 0) {
-        Aircraft landingAircraft(AircraftStatus::LANDING, rand() % 100 + 1, rand() % 10 + 1);
+        landingAircraft = Aircraft(AircraftStatus::LANDING, rand() % 100 + 1, rand() % 10 + 1);
         landingQueue.enqueueLanding(landingAircraft);
+        logEvent("Landing aircraft generated: " + landingAircraft.toString(), false);
     }
     else {
-        Aircraft takeOffAircraft(AircraftStatus::TAKEOFF, rand() % 100 + 1, rand() % 10 + 1);
+        takeOffAircraft = Aircraft(AircraftStatus::TAKEOFF, rand() % 100 + 1, rand() % 10 + 1);
         takeOffQueue.enqueueTakeOff(takeOffAircraft);
+        logEvent("Takeoff aircraft generated: " + takeOffAircraft.toString(), false);
     }
 }
+
 
 void SimulationManager::processAircraft() {
     handleLanding();
@@ -114,7 +80,6 @@ void SimulationManager::updateRunwayStatus() {
     }
 }
 
-
 void SimulationManager::updateStatistics() {
     statistics.updateStatistics(runways);
 }
@@ -124,13 +89,14 @@ void SimulationManager::handleLanding() {
         Runway& assignedRunway = assignRunwayForLanding();
         Aircraft landingAircraft;
         landingAircraft.setRunway(&assignedRunway);
+
         if (assignedRunway.getStatus() == RunwayStatus::FREE) {
-            Aircraft landingAircraft = landingQueue.dequeueLanding();
+            landingAircraft = landingQueue.dequeueLanding();
             assignedRunway.incrementPlanesLanded();
             assignedRunway.setStatus(RunwayStatus::OCCUPIED);
-            assignedRunway.setPriority(false); 
-
-            std::cout << "Aircraft " << landingAircraft.getCode() << " is landing on Runway " << assignedRunway.getCode() << std::endl;
+            assignedRunway.setPriority(false);
+            logEvent("Aircraft " + landingAircraft.getCode() + " is landing on Runway " + assignedRunway.getCode(), true);
+            
         }
     }
 }
@@ -146,12 +112,10 @@ void SimulationManager::handleTakeOff() {
             assignedRunway.incrementPlanesTakeOff();
             assignedRunway.setStatus(RunwayStatus::OCCUPIED);
             assignedRunway.setPriority(false);
-
-            std::cout << "Aircraft " << takeOffAircraft.getCode() << " is taking off from Runway " << assignedRunway.getCode() << std::endl;
+            logEvent("Aircraft " + takeOffAircraft.getCode() + " is taking off from Runway " + assignedRunway.getCode(), true);
         }
     }
 }
-
 
 Runway& SimulationManager::assignRunwayForLanding() {
     for (Runway& runway : runways) {
@@ -166,12 +130,10 @@ Runway& SimulationManager::assignRunwayForLanding() {
         }
     }
 
-
     return runways.front();
 }
 
 Runway& SimulationManager::assignRunwayForTakeOff() {
-
     for (Runway& runway : runways) {
         if (runway.getStatus() == RunwayStatus::FREE) {
             return runway;
@@ -180,3 +142,35 @@ Runway& SimulationManager::assignRunwayForTakeOff() {
 
     return runways.front();
 }
+
+void SimulationManager::logEvent(const std::string& event, bool enableLogging) {
+    if (enableLogging) {
+        std::cout << event << std::endl;
+    }
+}
+
+unsigned long long SimulationManager::getTakeOffQueueSize() const {
+    return takeOffQueue.takeOffQueueSize(); 
+}
+
+void SimulationManager::displayStatistics() const {
+    int totalLandedPlanes = statistics.getTotalLandedPlanes();
+    int crashedPlanes = statistics.getCrashedAircraftCount();
+    int totalTookOffPlanes = statistics.getTotalTookOffPlanes();
+    std::cout << "Crashed Aircraft Count: " << crashedPlanes << "\n";
+    std::cout << "Total Landed Planes: " << totalLandedPlanes << "\n";
+    std::cout << "Total Took Off Planes: " << totalTookOffPlanes << "\n";
+}
+
+unsigned long long SimulationManager::getLandingQueueSize() const {
+    return landingQueue.landingQueueSize();
+}
+
+const std::vector<Runway>& SimulationManager::getRunways() const {
+    return runways;
+}
+
+
+
+
+

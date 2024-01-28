@@ -12,6 +12,6 @@ public:
 private:
     SimulationManager& simulationManager;
     std::string runwayStatusToString(RunwayStatus status);
+    void displayGeneratedAircraftInfo();
+    void displayAircraftInFlight();
 };
-
-

@@ -1,4 +1,6 @@
 #include "UserInterface.h"
+#include "SimulationManager.h"
+
 
 UserInterface::UserInterface(SimulationManager& simManager) : simulationManager(simManager) {}
 
