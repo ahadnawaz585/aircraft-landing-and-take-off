@@ -1,5 +1,7 @@
 
 #include "SimulationManager.h"
+#include "UserInterface.h"
+#include "Logger.h"
 #include <iostream>
 #include <cstdlib>
 #include "crashHandling.h"
@@ -12,12 +14,46 @@ SimulationManager::SimulationManager() {
     }
 }
 
+const std::vector<Runway>& SimulationManager::getRunways() const {
+    return runways;
+}
+
+size_t SimulationManager::getLandingQueueSize() const {
+    return landingQueue.landingQueueSize();
+}
+
+size_t SimulationManager::getTakeOffQueueSize() const {
+    return takeOffQueue.takeOffQueueSize();
+}
+
+void SimulationManager::displayStatistics() const {
+    std::cout << "Simulation Statistics:\n";
+    std::cout << "-----------------------\n";
+
+    // Access the necessary data members from the statistics object
+    // and print them to the console
+    std::cout << "Total planes landed: " << statistics.getTotalLandedPlanes() << "\n";
+    std::cout << "Total planes took off: " << statistics.getTotalTookOffPlanes() << "\n";
+    std::cout << "Average landing time: " << statistics.getAverageLandingWaitTime() << " seconds\n";
+    std::cout << "Average takeoff time: " << statistics.getAverageTakeoffWaitTime() << " seconds\n";
+
+    // You can add more statistics based on your requirements
+
+    std::cout << "-----------------------\n";
+}
+
 void SimulationManager::runSimulation(int simulationTime) {
+    UserInterface ui(*this);
+    Logger logger("simulation_log.txt");
+
     while (timer.getCurrentTime() < simulationTime) {
         generateAircraft();
         processAircraft();
         updateRunwayStatus();
         updateStatistics();
+
+        ui.displaySimulationStatus(); 
+        logger.logEvent("Simulation step completed.");
 
         timer.incrementTime(1);
     }

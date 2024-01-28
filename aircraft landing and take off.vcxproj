@@ -127,25 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="aircraft landing and take off.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="aircraft.cpp" />
     <ClCompile Include="crashHandling.cpp" />
     <ClCompile Include="IdCodeGenerator.cpp" />
+    <ClCompile Include="logger.cpp" />
     <ClCompile Include="queue.cpp" />
     <ClCompile Include="runway.cpp" />
     <ClCompile Include="SimulationManager.cpp" />
     <ClCompile Include="Statistics.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="userInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aircraft.h" />
     <ClInclude Include="crashHandling.h" />
     <ClInclude Include="IdCodeGenerator.h" />
+    <ClInclude Include="logger.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="runway.h" />
     <ClInclude Include="SimulationManager.h" />
     <ClInclude Include="Statistics.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="userInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

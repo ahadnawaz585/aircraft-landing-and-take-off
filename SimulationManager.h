@@ -11,6 +11,12 @@ class SimulationManager {
 public:
     SimulationManager();
 
+    const std::vector<Runway>& getRunways() const;
+    size_t getLandingQueueSize() const;
+    size_t getTakeOffQueueSize() const;
+
+    void displayStatistics() const;  
+
     void runSimulation(int simulationTime);
 
 private:
@@ -31,4 +37,3 @@ private:
     Runway& assignRunwayForLanding();
     Runway& assignRunwayForTakeOff();
 };
-
