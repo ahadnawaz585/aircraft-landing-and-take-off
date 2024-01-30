@@ -15,7 +15,7 @@ int main() {
 
     while (!(std::cin >> simulationDuration) || simulationDuration <= 0) {
         std::cin.clear();  
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // discard invalid input
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
         std::cout << "Invalid input. Please enter a positive integer for simulation duration: ";
     }
 

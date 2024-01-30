@@ -124,7 +124,7 @@ void SimulationManager::generateTakeoffAircraft(const Aircraft& landingAircraft)
 
             // Log the event indicating the aircraft is set to fly again and mention the runway
             this->logEvent("Aircraft " + nonConstAircraft.getCode() + " is set to fly again. Runway " + assignedRunway->getCode() + " is now FREE.", true);
-
+            std::this_thread::sleep_for(std::chrono::seconds(5));
             // Update the runway status and display stats
             this->updateRunwayStatus();
             this->displaySimulationStats();
