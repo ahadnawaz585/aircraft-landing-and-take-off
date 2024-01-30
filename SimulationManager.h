@@ -4,33 +4,49 @@
 #include "Runway.h"
 #include "Queue.h"
 #include "Statistics.h"
-#include "Timer.h"
-#include <iostream>
+#include <vector>
+#include <thread>
 
-class SimulationManager {
+#include "Logger.h"
+#include "Timer.h"
+
+class UserInterface;
+
+class SimulationManager
+{
 public:
     SimulationManager();
-    const std::vector<Runway>& getRunways() const;
+    ~SimulationManager();
+    const std::vector<Runway> &getRunways() const;
     size_t getLandingQueueSize() const;
     size_t getTakeOffQueueSize() const;
     void displayStatistics() const;
     void runSimulation(int simulationTime);
-    const Aircraft& getCurrentGeneratedAircraft() const;
-    const std::queue<Aircraft>& getAircraftInFlight() const;
+    void displaySimulationStats() const;
+    void logRunwayStatus(const std::string &runwayStatus);
+    void logEvent(const std::string& event, bool enableLogging);
 
 private:
+    Logger logger;
+    std::vector<std::thread> threads;
+    UserInterface *userInterface;
     std::vector<Runway> runways;
+    std::string runwayStatusToString(RunwayStatus status);
     Queue landingQueue;
     Queue takeOffQueue;
+    
     Statistics statistics;
     Timer timer;
     void generateAircraft();
+    void displayInitialInfo();
     void processAircraft();
     void updateRunwayStatus();
     void updateStatistics();
     void handleLanding();
     void handleTakeOff();
-    Runway& assignRunwayForLanding();
-    Runway& assignRunwayForTakeOff();
-    void logEvent(const std::string& event, bool enableLogging);
+    void displayRunwayStatus(const std::string &runwayCode, const std::string &status);
+    void waitThreadsCompletion();
+    Runway &assignRunwayForLanding();
+    Runway &assignRunwayForTakeOff();
+    void generateTakeoffAircraft(const Aircraft& landingAircraft);
 };

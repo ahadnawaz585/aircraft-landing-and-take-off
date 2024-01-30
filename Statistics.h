@@ -9,17 +9,18 @@ private:
     std::chrono::seconds totalLandingTime;
     std::chrono::seconds totalTakeoffTime;
     int totalFuelAvailable;
-    std::chrono::seconds totalLandingWaitTime;
-    std::chrono::seconds totalTakeoffWaitTime;
     int landingCount;
     int takeoffCount;
     int totalLandedPlanes;
     int totalTookOffPlanes;
+    std::chrono::seconds totalLandingWaitTime;
+    std::chrono::seconds totalTakeoffWaitTime;
 
 public:
     Statistics();
 
     void aircraftCrashed();
+    void displayStatistics() const;
     void updateLandingTime(std::chrono::seconds time);
     void updateTakeoffTime(std::chrono::seconds time);
     void updateFuelAvailable(int fuel);

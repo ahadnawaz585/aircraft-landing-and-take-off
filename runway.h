@@ -31,12 +31,12 @@ private:
     std::chrono::steady_clock::time_point lastChangeTime;
 
 public:
-   
     Runway(RunwayStatus status, bool priority);
     RunwayStatus getStatus() const;
     bool hasLandingPriority() const;
     int getPlanesLanded() const;
     int getPlanesTakeOff() const;
+    std::string getStatusString() const;
     const std::string& getCode() const;
 
     void setStatus(RunwayStatus status);

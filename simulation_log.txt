@@ -1,60 +1,156 @@
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
-Simulation step completed.
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: FREE
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: FREE
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: FREE
+Runway RW008: FREE
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: OCCUPIED
+Runway RW008: OCCUPIED
+Runway RW010: FREE
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: OCCUPIED
+Runway RW008: OCCUPIED
+Runway RW010: OCCUPIED
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: OCCUPIED
+Runway RW008: OCCUPIED
+Runway RW010: OCCUPIED
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: OCCUPIED
+Runway RW008: OCCUPIED
+Runway RW010: OCCUPIED
+Runway Status when Aircraft Generated:
+Runway RW002: OCCUPIED
+Runway RW004: OCCUPIED
+Runway RW006: OCCUPIED
+Runway RW008: OCCUPIED
+Runway RW010: OCCUPIED

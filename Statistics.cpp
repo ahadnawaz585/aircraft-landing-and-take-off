@@ -1,7 +1,5 @@
 #include "Statistics.h"
-#include <chrono>
-#include "runway.h"
-#include "SimulationManager.h"
+#include <iostream>
 
 constexpr std::chrono::seconds operator"" _s(unsigned long long s) {
     return std::chrono::seconds(s);
@@ -9,8 +7,8 @@ constexpr std::chrono::seconds operator"" _s(unsigned long long s) {
 
 Statistics::Statistics()
     : crashedAircraftCount(0), totalLandingTime(0_s), totalTakeoffTime(0_s), totalFuelAvailable(0),
-    landingCount(0), takeoffCount(0), totalLandingWaitTime(0_s), totalTakeoffWaitTime(0_s),
-    totalLandedPlanes(0), totalTookOffPlanes(0) {}
+      landingCount(0), takeoffCount(0), totalLandingWaitTime(0_s), totalTakeoffWaitTime(0_s),
+      totalLandedPlanes(0), totalTookOffPlanes(0) {}
 
 void Statistics::aircraftCrashed() {
     crashedAircraftCount++;
@@ -23,6 +21,7 @@ void Statistics::updateLandingTime(std::chrono::seconds time) {
 void Statistics::updateTakeoffTime(std::chrono::seconds time) {
     totalTakeoffTime += time;
 }
+
 void Statistics::updateFuelAvailable(int fuel) {
     totalFuelAvailable += fuel;
 }
@@ -95,6 +94,8 @@ void Statistics::updateStatistics(const std::vector<Runway>& runways) {
     int totalPlanesLanded = 0;
     int totalPlanesTakeOff = 0;
     int totalRunwayOperations = 0;
+    std::chrono::seconds totalWaitTimeLanding = 0_s;
+    std::chrono::seconds totalWaitTimeTakeoff = 0_s;
 
     for (const Runway& runway : runways) {
         totalPlanesLanded += runway.getPlanesLanded();
@@ -108,14 +109,22 @@ void Statistics::updateStatistics(const std::vector<Runway>& runways) {
 
         if (isRunwayOccupied) {
             totalRunwayOperations++;
+            if (lastOperation == RunwayOperation::LANDING) {
+                totalWaitTimeLanding += std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - runway.getLastChangeTime());
+            } else if (lastOperation == RunwayOperation::TAKEOFF) {
+                totalWaitTimeTakeoff += std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - runway.getLastChangeTime());
+            }
         }
     }
 
-    double averagePlanesPerRunway = runways.empty() ? 0.0 : static_cast<double>(totalPlanesLanded + totalPlanesTakeOff) / runways.size();
+    totalLandingWaitTime = totalWaitTimeLanding;
+    totalTakeoffWaitTime = totalWaitTimeTakeoff;
 
+    double averagePlanesPerRunway = runways.empty() ? 0.0 : static_cast<double>(totalPlanesLanded + totalPlanesTakeOff) / runways.size();
 
     totalLandedPlanes = totalPlanesLanded;
     totalTookOffPlanes = totalPlanesTakeOff;
     averagePlanesPerRunway = averagePlanesPerRunway;
     totalRunwayOperations = totalRunwayOperations;
 }
+

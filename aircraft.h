@@ -1,7 +1,8 @@
+
 #pragma once
 
 #include "IdCodeGenerator.h"
-#include "runway.h"
+#include "Runway.h"
 #include <string>
 
 enum class AircraftStatus
@@ -18,26 +19,28 @@ class Aircraft : public IdCodeGenerator
 private:
     int id;
     std::string code;
-    AircraftStatus craftStatus;
-    int fuelLevel;
-    int airTime;
+    AircraftStatus craftStatus = AircraftStatus::IDLE;
+    int fuelLevel = 0;
+    int airTime = 0;
 
 public:
     Runway* runway = nullptr;
     Runway* getRunway() const;
     Aircraft() = default;
-    Aircraft(AircraftStatus status, int fuel, int time); 
+    Aircraft(AircraftStatus status, int fuel, int time);
     std::string toString() const;
-//getter
+
+    // Getter methods
     int getId() const;
     AircraftStatus getStatus() const;
     int getFuelLevel() const;
     int getAirTime() const;
-    const std::string &getCode() const;
-//setter    
+    const std::string& getCode() const;
+
+    // Setter methods
     void setRunway(Runway* craftRunway);
-    void setFuelLevel(int fuel);
+    void refill();
+    void setFuelLevel(int newFuelLevel);
     void setStatus(AircraftStatus status);
     void setAirTime(int time);
 };
-

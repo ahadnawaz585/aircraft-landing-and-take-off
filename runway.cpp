@@ -40,6 +40,17 @@ void Runway::setPriority(bool priority)
     this->hasPriority = priority;
 }
 
+std::string Runway::getStatusString() const {
+    switch (status) {
+    case RunwayStatus::FREE:
+        return "FREE";
+    case RunwayStatus::OCCUPIED:
+        return "OCCUPIED";
+    default:
+        return "UNKNOWN";
+    }
+}
+
 void Runway::incrementPlanesLanded()
 {
     planesLanded++;
@@ -63,3 +74,6 @@ std::chrono::steady_clock::time_point Runway::getLastChangeTime() const
 {
     return lastChangeTime;
 }
+
+
+

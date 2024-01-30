@@ -5,5 +5,12 @@ Logger::Logger(const std::string& logFileName) {
 }
 
 void Logger::logEvent(const std::string& logMessage) {
+
     logFile << logMessage << "\n";
+}
+
+Logger::~Logger() {
+    if (logFile.is_open()) {
+        logFile.close();
+    }
 }
